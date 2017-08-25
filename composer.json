@@ -6,7 +6,8 @@
 	],
 
 	"require": {
-		"balancer/bors-core": "*"
+		"balancer/bors-core": "*",
+		"facebook/graph-sdk": "5.*"
 	},
 
 	"autoload": {
