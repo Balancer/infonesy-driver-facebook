@@ -1,0 +1,17 @@
+{
+	"name": "balancer/infonesy-driver-facebook",
+	"description": "Infonesy Facebook driver",
+	"authors": [
+		{ "name": "Roman =Balancer= Karshiev", "email": "balancer@balancer.ru" }
+	],
+
+	"require": {
+		"balancer/bors-core": "*"
+	},
+
+	"autoload": {
+		"psr-4": {
+			"Infonesy\\": "src/"
+		}
+	}
+}
