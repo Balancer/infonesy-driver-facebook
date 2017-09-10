@@ -9,9 +9,9 @@ class Facebook extends \B2\Obj
 		return 'facebook.' . $this->id();
 	}
 
-	function posts()
+	function posts_list()
 	{
-		$fb = new Facebook\Facebook([
+		$fb = new \Facebook\Facebook([
 			'app_id' => $this->app_id(),
 		    'app_secret' => $this->app_secret(),
 		    'default_graph_version' => 'v2.10',
@@ -24,7 +24,15 @@ class Facebook extends \B2\Obj
 
 		$data = $response->getDecodedBody();
 
-		yield $data;
+		foreach($data['data'] as $x)
+		{
+			yield popval($x, 'id') => array_filter([
+				'create_time' => strtotime(popval($x, 'created_time')),
+				'source' => popval($x, 'message'),
+				'action' => popval($x, 'story'),
+				'info' => $x ? $x : NULL,
+			]);
+		}
 
 //		dump($data);
 
